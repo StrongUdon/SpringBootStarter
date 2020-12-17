@@ -2,7 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.demo.base.mapper.RootMapper">
-    <select id="selectUser">
-        select * from user
+
+    <resultMap id="User" type="kr.co.demo.base.domain.api.User"/>
+    <select id="selectUser" resultType = "User">
+        select *
+        from user
+    </select>
+    <select id="selectUserByEmail" resultType = "int">
+        select count(*)
+        from user
+        where email = #{email}
+    </select>
+    <select id="selectUserByEmailPw" resultType = "int">
+        select count(*)
+        from user
+        where email = #{email} and password = #{password}
     </select>
 </mapper>

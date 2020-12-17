@@ -22,6 +22,12 @@ database:
     password: fpseld1234
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
+#database:
+#  hikari:
+#    jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/base?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC
+#    username: admin
+#    password: fpseld1234
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 --- #dev
 spring:
   config:
