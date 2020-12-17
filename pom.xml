@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>kr.co.demo</groupId>
 	<artifactId>base</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>base</name>
 	<description>Basic setup for Spring Boot Project</description>
 

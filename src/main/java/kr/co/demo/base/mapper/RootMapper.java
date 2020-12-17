@@ -9,4 +9,5 @@ public interface RootMapper {
     int selectUserByEmail(String email);
     int insertUser(User user);
     int selectUserbyEmailPw(User user);
+    int plz();
 }
