@@ -30,9 +30,13 @@ public class RootController {
     public ModelAndView login(@RequestBody User user, ModelAndView modelAndView){
         if(rootService.loginCheck(user)){
             modelAndView.setViewName("/");
-            modelAndView.addObject("user", user);
+            modelAndView.addObject("users", user);
         } else{
             modelAndView.setViewName("/login");
+
+
+
+
         }
 
         return modelAndView;
@@ -41,6 +45,7 @@ public class RootController {
     @GetMapping(value = "/register")
     public ModelAndView registerPage(ModelAndView modelAndView){
         modelAndView.setViewName("register");
+
         return modelAndView;
     }
 
