@@ -17,9 +17,9 @@ spring:
 
 database:
   hikari:
-    jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/base?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC
-    username: root
-    password: fpseld1234
+    jdbc-url: 
+    username: 
+    password:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
 #database:
