@@ -30,7 +30,7 @@ public class RootController {
     public ModelAndView login(@RequestBody User user, ModelAndView modelAndView){
         if(rootService.loginCheck(user)){
             modelAndView.setViewName("/");
-            modelAndView.addObject("users", user);
+            modelAndView.addObject("user", user);
         } else{
             modelAndView.setViewName("/login");
 
