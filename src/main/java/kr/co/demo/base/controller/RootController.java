@@ -1,7 +1,6 @@
 package kr.co.demo.base.controller;
 
-import kr.co.demo.base.domain.api.ChatResponse;
-import kr.co.demo.base.domain.api.User;
+import kr.co.demo.base.domain.User;
 import kr.co.demo.base.service.RootService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

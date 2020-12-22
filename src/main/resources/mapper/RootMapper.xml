@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.demo.base.mapper.RootMapper">
-
-    <resultMap id="User" type="kr.co.demo.base.domain.api.User"/>
+<!--    USER MAPPER-->
+    <resultMap id="User" type="kr.co.demo.base.domain.User"/>
     <select id="selectUser" resultType = "User">
         select *
         from user
@@ -18,4 +18,43 @@
         from user
         where email = #{email} and password = #{password}
     </select>
+    <insert id="insertUser">
+        insert into user
+               ( email
+                , pw
+                , role_enum
+                , first_name
+                , last_name
+                , phone )
+        values
+               ( #{email}
+               , #{pw}
+               , 'NON'
+               , #{first_name}
+               , #{last_name}
+               , #{phone})
+    </insert>
+    <!--END USER MAPPER-->
+    <!--PRODUCT MAPPER-->
+
+    <select id="selectProductByCategory">
+        select *
+        from product
+        where sub_category_code = (
+        select code
+        from sub_category
+        where category_code = 'SHOES'
+        );
+    </select>
+    <insert id="insertProductSimple">
+        insert into product
+                (name
+                , price
+                , sub_category_code)
+        values
+                (#{name}
+                , #{price}
+                , #{sub_category_code})
+    </insert>
+
 </mapper>

@@ -1,19 +1,9 @@
 spring:
-  profiles:
-    active: local
   devtools:
     livereload:
       enabled: false
 server:
   port: 8080
---- #local
-spring:
-  config:
-    activate:
-      on-profile: local
-  logging:
-    level:
-      root: debug
 
 #database:
 #  hikari:
@@ -25,9 +15,17 @@ spring:
 database:
   hikari:
     jdbc-url: jdbc:log4jdbc:mysql://127.0.0.1:3306/base?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC
-    username: admin
+    username: root
     password: fpseld1234
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+--- #local
+spring:
+  config:
+    activate:
+      on-profile: local
+  logging:
+    level:
+      root: debug
 --- #dev
 spring:
   config:

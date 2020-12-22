@@ -1,6 +1,6 @@
 package kr.co.demo.base.mapper;
 
-import kr.co.demo.base.domain.api.User;
+import kr.co.demo.base.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

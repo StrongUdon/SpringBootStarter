@@ -1,7 +1,7 @@
 package kr.co.demo.base.service;
 
 
-import kr.co.demo.base.domain.api.User;
+import kr.co.demo.base.domain.User;
 import kr.co.demo.base.mapper.RootMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
