@@ -1,8 +1,6 @@
 package kr.co.demo.base.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -21,14 +19,19 @@ CREATE TABLE product(
         );
 
 */
+
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-public class Product implements Serializable {
-    private int productID;
+public class Product extends CommonList implements Serializable {
+    private int productId;
+    @NonNull
     private String name;
+    @NonNull
     private int price;
-    private SubCategory subCategoryCode;
+    @NonNull
+    private String subCategoryCode;
     private boolean onSale;
     private boolean onDiscount;
     private Timestamp createdAt;

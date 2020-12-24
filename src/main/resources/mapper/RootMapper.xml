@@ -22,39 +22,144 @@
         insert into user
                ( email
                 , pw
-                , role_enum
-                , first_name
-                , last_name
+                , roleEnum
+                , firstName
+                , lastName
                 , phone )
         values
                ( #{email}
                , #{pw}
                , 'NON'
-               , #{first_name}
-               , #{last_name}
+               , #{firstName}
+               , #{lastName}
                , #{phone})
     </insert>
+    <update id="setUserState">
+        update from user
+        set role_enum = #{roleEnum}
+        where email = #{email}
+    </update>
+    <update id="shallowDeleteUserByEmail">
+        update from user
+        set is_dormant = #{isDormant}
+        where email = #{email}
+    </update>
+    <delete id="deepDeleteUserByEmail">
+        delete from user
+        where email = #{email}
+    </delete>
     <!--END USER MAPPER-->
+    <!--CATEGORY-->
+    <resultMap id="Category" type="kr.co.demo.base.domain.Category"/>
+    <select id="selectCategory" resultType="Category">
+        select *
+        from category
+    </select>
+    <insert id="insertCategory">
+        insert into category
+                ( code
+                , description )
+        values
+                ( #{code}
+                , #{description} )
+    </insert>
+    <update id="updateCategory">
+        update category
+        set code = #{code}
+          , description = #{description}
+    </update>
+    <delete id="deleteCategory">
+        delete from category
+        where code = #{code}
+    </delete>
+    <!--END CATEGORY-->
+    <!--SUB_CATEGORY-->
+    <resultMap id="SubCategory" type="kr.co.demo.base.domain.SubCategory"/>
+    <select id="selectSubCategory" resultType="SubCategory">
+        select *
+        from sub_category
+    </select>
+    <insert id="insertSubCategory">
+        insert into category
+        ( code
+        , description
+        , category_code )
+        values
+        ( #{code}
+        , #{description}
+        , #{categoryCode} )
+    </insert>
+    <update id="updateSubCategory">
+        update category
+        set code = #{code}
+        , description = #{description}
+        , category_code = #{subCategoryCode}
+    </update>
+    <delete id="deleteSubCategory">
+        delete from sub_category
+        where code = #{code}
+    </delete>
+    <!--END SUB_CATEGORY-->
     <!--PRODUCT MAPPER-->
-
-    <select id="selectProductByCategory">
+    <resultMap id="Product" type="kr.co.demo.base.domain.Product"/>
+    <select id="selectProduct" resultType="Product">
+        select *
+        from product
+        <include refid="paginationQuery"/>
+    </select>
+    <select id="selectProductCnt" resultType="int">
+        select count(*)
+        from product;
+    </select>
+    <select id="selectProductByCategory" resultType="Product">
         select *
         from product
         where sub_category_code = (
         select code
         from sub_category
-        where category_code = 'SHOES'
+        where category_code = #{categoryCode}
         );
     </select>
     <insert id="insertProductSimple">
         insert into product
                 (name
                 , price
-                , sub_category_code)
+                , sub_Category_Code)
         values
                 (#{name}
                 , #{price}
-                , #{sub_category_code})
+                , #{subCategoryCode})
     </insert>
+    <insert id="insertProductDeep">
+        insert into product
+        ( name
+        , price
+        , subCategoryCode
+        , on_sale
+        , on_discount )
+        values
+        ( #{name}
+        , #{price}
+        , #{subCategoryCode}
+        , #{on_sale}
+        , #{on_discount} )
+    </insert>
+    <update id="updateProduct">
+        update product
+        set
+          name = #{name}
+        , price = #{price}
+        , subCategoryCode = #{subCategoryCode}
+        , on_sale = #{on_sale}
+        , on_discount = #{on_discount}
+    </update>
+    <delete id="deleteProduct">
+        delete from product
+        where product_id = #{product_id}
+    </delete>
+    <!--END PRODUCT MAPPER-->
 
+    <sql id="paginationQuery">
+        limit #{pageSize} offset #{startIndex}
+    </sql>
 </mapper>

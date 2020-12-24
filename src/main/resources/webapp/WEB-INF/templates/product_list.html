@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>상품 목록</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+               <th>name</th>
+               <th>price</th>
+               <th>created_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${productList}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.createdAt}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination">
+<!--            <li th:if="${pagination.currentPage ne 1}" class="page-item"><a class="page-link" th:href="@{/product/list/{previousPage} (previousPage = ${pagination.previousPage})}">Previous</a></li>
+            <li th:each="${pagination.pageNumber}, i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}" class="page-item" th:attr="class=${pageNumber eq pagination.currentPage ? 'active' : ''}">
+                <a th:href="@{/product/list/{pageNumber} (pageNumber = ${pagination.pageNumber})}"class="page-link" th:text="${pageNumber}"></a>
+            </li>-->
+            <li class="page-item"><a class="page-link" th:href="@{/product/list/{nextPage} (nextPage = ${pagination.nextPage})}">Next</a></li>
+        </ul>
+    </nav>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
+</html>

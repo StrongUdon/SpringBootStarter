@@ -18,6 +18,7 @@ CREATE TABLE user(
 	last_name VARCHAR(20) NOT NULL,
 	phone VARCHAR(45) UNIQUE NOT NULL,
 	created_at DATETIME DEFAULT NOW(),
+	is_dormant BOOL DEFAULT false,
 	CONSTRAINT base_user_pk PRIMARY KEY(email)
 );
 */
