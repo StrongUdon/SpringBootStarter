@@ -22,14 +22,14 @@
         insert into user
                ( email
                 , pw
-                , roleEnum
-                , firstName
-                , lastName
+                , role_enum
+                , first_name
+                , last_name
                 , phone )
         values
                ( #{email}
-               , #{pw}
-               , 'NON'
+               , #{password}
+               , #{roleEnum}
                , #{firstName}
                , #{lastName}
                , #{phone})
@@ -80,7 +80,7 @@
         from sub_category
     </select>
     <insert id="insertSubCategory">
-        insert into category
+        insert into sub_category
         ( code
         , description
         , category_code )

@@ -20,4 +20,5 @@ public class SubCategory {
 
     private final String code;
     private final String description;
+    private final String categoryCode;
 }

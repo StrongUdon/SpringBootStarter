@@ -1,5 +1,6 @@
 package kr.co.demo.base.common.configuration;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,6 +56,7 @@ public class MvcConfiguration implements WebMvcConfigurer {
 
          templateEngine.setTemplateResolver(templateResolver());
 
+         templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
     }
 

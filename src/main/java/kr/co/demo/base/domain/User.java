@@ -32,7 +32,7 @@ public class User implements Serializable {
     @NonNull
     private String password;
     @NonNull
-    private UserTypeEnum roleEnum;
+    private String roleEnum;
     @NonNull
     private String firstName;
     @NonNull
@@ -40,4 +40,5 @@ public class User implements Serializable {
     @NonNull
     private String phone;
     private Timestamp createdAt;
+
 }

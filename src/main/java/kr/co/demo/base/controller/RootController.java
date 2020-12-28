@@ -1,8 +1,11 @@
 package kr.co.demo.base.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import kr.co.demo.base.common.enums.UserTypeEnum;
 import kr.co.demo.base.common.util.Pagination;
+import kr.co.demo.base.domain.Category;
 import kr.co.demo.base.domain.Product;
+import kr.co.demo.base.domain.SubCategory;
 import kr.co.demo.base.domain.User;
 import kr.co.demo.base.service.RootService;
 import lombok.extern.slf4j.Slf4j;
@@ -91,11 +94,18 @@ public class RootController {
         modelAndView.setViewName("product_list");
         return modelAndView;
     }
-    @PostMapping(value = "/product/insert")
-    public String productInsert(){
-/*        for(int i = 0; i < 300; i++){
-            rootService.insertProduct(new Product("상품"+i, 1000 + i, "BOOTS") );
-        }*/
+    @PostMapping(value = "/insert/db")
+    public String insertDb(){
+        for(int j = 0; j < 10; j ++){
+//            rootService.insertUser(new User("user" + j,"1234", UserTypeEnum.NOT_VERIFIED.getCode(), "first" + j,"last" + j, "0100000000"));
+            rootService.insertCategory(new Category("category" + j, "카테고리" + j));
+            rootService.insertSubCategory(new SubCategory("subCategory" + j, "카테고리" + j, "category" + j));
+
+            for(int i = 0; i < 300; i++){
+                rootService.insertProduct(new Product("상품"+i, 1000 + i, "subCategory"+ j) );
+            }
+        }
+
         return "OK";
     }
 

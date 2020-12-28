@@ -2,7 +2,9 @@ package kr.co.demo.base.service;
 
 
 import kr.co.demo.base.common.util.Pagination;
+import kr.co.demo.base.domain.Category;
 import kr.co.demo.base.domain.Product;
+import kr.co.demo.base.domain.SubCategory;
 import kr.co.demo.base.domain.User;
 import kr.co.demo.base.mapper.RootMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -52,4 +54,8 @@ public class RootService {
     public int insertProduct(Product product){
         return rootMapper.insertProductSimple(product);
     }
+
+    public int insertSubCategory(SubCategory subCategory){ return rootMapper.insertSubCategory(subCategory);}
+
+    public int insertCategory(Category category){ return rootMapper.insertCategory(category);}
 }
